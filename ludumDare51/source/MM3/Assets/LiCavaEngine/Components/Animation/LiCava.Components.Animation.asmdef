@@ -1,0 +1,18 @@
+{
+    "name": "LiCava.Components",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1b0c3344aae4e7242af848cf2890cf0b",
+        "GUID:ecd7c97e65d5ffe458a15ee2a15ff263",
+        "GUID:90606cbddd1dae84694d49a6ae424a9f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

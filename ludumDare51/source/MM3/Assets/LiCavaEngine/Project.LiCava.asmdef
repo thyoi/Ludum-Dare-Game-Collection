@@ -1,0 +1,16 @@
+{
+    "name": "Project.LiCava",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1b0c3344aae4e7242af848cf2890cf0b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
