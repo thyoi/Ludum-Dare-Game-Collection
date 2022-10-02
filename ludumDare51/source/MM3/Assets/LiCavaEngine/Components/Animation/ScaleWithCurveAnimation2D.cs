@@ -12,6 +12,7 @@ public class ScaleWithCurveAnimation2D : MonoBehaviour
     public float initSize = 1;
     public float endSize;
     public AnimationStatic.endType endType;
+    public string initSound;
 
     private float counter;
     private BoolCountroler stop;
@@ -77,6 +78,10 @@ public class ScaleWithCurveAnimation2D : MonoBehaviour
             if (delay > 0)
             {
                 delay -= dt;
+                if (delay <= 0)
+                {
+                    SoundManager.PlaySound(initSound);
+                }
             }
             else
             {

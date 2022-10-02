@@ -13,43 +13,65 @@ public class Boomable : MonoBehaviour
     public float fadeTime = 1;
     public float ScaleTime = 1;
     public int particalNum = 10;
+    public string sound;
 
     public GameObject boomRound;
     public GameObject boomMark;
     public GameObject[] boomParticalList;
+    public bool Keep;
 
     private float dt;
     private bool onBoom;
-    private ScaleWithCurveAnimation2D scaleAnimation;
-    private FadeInAnimation fadeAnimation;
-    private SpriteRenderer spriteRenderer;
+    public ScaleWithCurveAnimation2D scaleAnimation;
+    public FadeInAnimation fadeAnimation;
+    public SpriteRenderer spriteRenderer;
 
 
-    public void StartBoom()
+    public void StartBoom(AnimationCallBack callback = null)
     {
+        SoundManager.PlaySound(sound);
         onBoom = true;
-        scaleAnimation.curve = mainScale;
-        scaleAnimation.initSize = 1;
-        scaleAnimation.EndSize = 1.2f;
-        scaleAnimation.animationTime = ScaleTime;
-        fadeAnimation.outMode = true;
-        fadeAnimation.animationTime = fadeTime;
-        creatBoomRound();
+        if(fadeAnimation != null && scaleAnimation != null)
+        {
+            OriBoom();
+        }
+        if(boomRound != null)
+        {
+            creatBoomRound(callback);
+        }
         if (boomParticalList.Length == 3)
         {
             CreateParticals(particalNum);
         }
         transform.parent = null;
 
-        fadeAnimation.StartAnimation();
+    }
+
+    public void OriBoom()
+    {
+        scaleAnimation.curve = mainScale;
+        scaleAnimation.initSize = 1;
+        scaleAnimation.EndSize = 1.2f;
+        scaleAnimation.animationTime = ScaleTime;
+        fadeAnimation.outMode = true;
+        fadeAnimation.animationTime = fadeTime;
+        if (Keep)
+        {
+            fadeAnimation.StartAnimation();
+        }
+        else
+        {
+            fadeAnimation.StartAnimation(() => { Destroy(fadeAnimation.gameObject); });
+        }
         scaleAnimation.StartAnimation();
     }
 
     private void Awake()
     {
-        scaleAnimation = transform.parent.GetComponent<ScaleWithCurveAnimation2D>();
-        fadeAnimation = transform.parent.GetComponent<FadeInAnimation>();
-        spriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
+        //scaleAnimation = transform.parent.GetComponent<ScaleWithCurveAnimation2D>();
+        //fadeAnimation = transform.parent.GetComponent<FadeInAnimation>();
+        //spriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
+        //transform.parent.GetComponent<LeaveStage>().boom = this;
     }
     // Update is called once per frame
     void Update()
@@ -84,19 +106,20 @@ public class Boomable : MonoBehaviour
             if (markDelay <= 0)
             {
                 GameObject tem = Instantiate(boomMark, transform);
+                tem.transform.localScale = new Vector3(size, size, 1);
                 tem.transform.GetComponent<FadeInAnimation>().StartAnimation();
                 tem.transform.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
             }
         }
     }
 
-    private void creatBoomRound()
+    private void creatBoomRound(AnimationCallBack callback = null)
     {
-        if(boomRound != null)
+        if (boomRound != null)
         {
             GameObject tem = Instantiate(boomRound, transform);
-            tem.transform.GetComponent<BoomRound>().StartBoom(size);
-            tem.transform.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
+            tem.transform.GetComponent<BoomRound>().StartBoom(size, callback);
+            tem.transform.GetComponent<BoomRound>().SetColor(spriteRenderer.color);
         }
     }
 

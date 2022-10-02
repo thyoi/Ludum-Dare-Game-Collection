@@ -54,7 +54,7 @@ public class ScaleAnimation2D : MonoBehaviour
     void Awake()
     {
         stop = new BoolCountroler(false);
-        pause = new BoolCountroler(true);
+        pause = new BoolCountroler(false);
         pause.OperationIndex = ValueCountrolerManager.OprationName.bool_or;
         stop.AddFactor(pause);
         if (DirectMode)

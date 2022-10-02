@@ -42,6 +42,9 @@ public class ClockControler : MonoBehaviour
         {
             lastNum = n;
             num.SetSprites(CharaterManager.GetNumSprites(n));
+            if(n == 0)
+            {
+            }
         }
         
     }
@@ -127,21 +130,24 @@ public class ClockControler : MonoBehaviour
         dt = TimeManager.DeltaTime(timeLayer);
         if (dt > 0)
         {
-            if (Delay > 0)
+
+
+            if (init)
             {
-                Delay -= dt;
-            }
-            else
-            {
-                if (init)
+                if (Delay > 0)
+                {
+                    Delay -= dt;
+                }
+                else
                 {
                     UpdateInit();
                 }
+            }
                 if (start)
                 {
                     UpdateStart();
                 }
-            }
+            
         }
     }
 }

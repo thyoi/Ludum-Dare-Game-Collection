@@ -9,6 +9,7 @@ public class FadeInAnimation : MonoBehaviour
     public int timeLayer = 3;
     public float animationTime = 1;
     public float delay = 0;
+    public string initSound;
 
     private BoolCountroler stop;
     private BoolCountroler pause;
@@ -50,6 +51,10 @@ public class FadeInAnimation : MonoBehaviour
             if (delay > 0)
             {
                 delay -= dt;
+                if (delay <= 0)
+                {
+                    SoundManager.PlaySound(initSound);
+                }
             }
             else
             {
@@ -95,7 +100,7 @@ public class FadeInAnimation : MonoBehaviour
         SetApha(apha);
     }
 
-    void SetApha(float a)
+    public void SetApha(float a)
     {
         Color tem = spriteRenderer.color;
         tem.a = a;

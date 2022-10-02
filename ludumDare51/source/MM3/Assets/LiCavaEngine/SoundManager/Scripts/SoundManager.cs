@@ -34,6 +34,7 @@ public class SoundManager : MonoBehaviour
         mainManager = this;
         myTransform = transform;
         InitSound();
+        audioDic["background"].SetLoop();
     }
 
     public void Play(string name)
@@ -84,6 +85,14 @@ public class AudioPlayer
         if (counter >= audios.Length)
         {
             counter = 0;
+        }
+    }
+
+    public void SetLoop()
+    {
+        foreach(AudioSource a in audios)
+        {
+            a.loop = true;
         }
     }
 }

@@ -8,12 +8,18 @@ public class BoomRound : MonoBehaviour
     public ScaleWithCurveAnimation2D mask;
 
 
-    public void StartBoom(float Size)
+    public void StartBoom(float Size, AnimationCallBack callback = null)
     {
         round.endSize = Size;
         mask.endSize = Size + 0.1f;
-        round.StartAnimation();
+        mask.delay *= Size;
+        round.StartAnimation(callback);
         mask.StartAnimation();
+    }
+
+    public void SetColor(Color c)
+    {
+        round.transform.GetComponent<SpriteRenderer>().color = c;
     }
 
 

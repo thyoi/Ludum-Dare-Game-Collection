@@ -15,6 +15,7 @@ public class LeaveStage : MonoBehaviour
     public  Character characterAnimation;
     public ScaleWithCurveAnimation2D scaleAnimation;
     public SpriteRenderer spriteRenderer;
+    public Boomable boom;
 
     public void ShowInMask()
     {
@@ -42,13 +43,9 @@ public class LeaveStage : MonoBehaviour
 
     public void Clean()
     {
-        if (characterAnimation is null)
-        {
+
             Destroy(this.gameObject);
-        }
-        else
-        {
-            characterAnimation.ReturnToPool();
-        }
+
+
     }
 }

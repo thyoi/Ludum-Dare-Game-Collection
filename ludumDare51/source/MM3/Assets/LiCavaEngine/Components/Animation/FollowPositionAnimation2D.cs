@@ -12,8 +12,8 @@ public class FollowPositionAnimation2D : MonoBehaviour
 
     private Transform myTransform;
     private Vector3Countroler registerPosition;
-    protected Vector2 curPosition;
-    protected Vector2 endPosition;
+    public Vector2 curPosition;
+    public Vector2 endPosition;
     protected Vector2 velocity;
     protected float dt;
     private BoolCountroler stop;
@@ -106,7 +106,7 @@ public class FollowPositionAnimation2D : MonoBehaviour
     }
 
 
-    protected void SetPosition(Vector2 p)
+    public void SetPosition(Vector2 p)
     {
         if (DirectMode)
         {

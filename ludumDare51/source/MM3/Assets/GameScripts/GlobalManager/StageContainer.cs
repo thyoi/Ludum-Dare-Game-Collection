@@ -7,23 +7,37 @@ public class StageContainer : MonoBehaviour
     public ScaleWithCurveAnimation2D MaskAnimation;
     public SpriteRenderer BackGround;
 
+    private Level curLevel;
     private List<LeaveStage> leaveItems = new List<LeaveStage>();
     private List<LeaveStage> scaleLeaveItem = new List<LeaveStage>();
     private List<LeaveStage> pushLeaveStages = new List<LeaveStage>();
 
     public void Clean()
     {
-        foreach(LeaveStage l in leaveItems)
+        if (curLevel != null)
         {
-            if (l != null)
-            {
-                l.Clean();
-            }
+            Destroy(curLevel.gameObject);
+        }
+        
+    }
+
+    public void AddItem(LeaveStage l)
+    {
+        leaveItems.Add(l);
+        switch (l.leave)
+        {
+            case (LeaveStage.leaveType.Scale):
+                scaleLeaveItem.Add(l);
+                break;
+            case (LeaveStage.leaveType.pushed):
+                pushLeaveStages.Add(l);
+                break;
         }
     }
     public void Register(Level l)
     {
         l.InitLevel();
+        curLevel = l;
         foreach(LeaveStage i in l.objectList)
         {
             switch (i.leave)
@@ -58,6 +72,10 @@ public class StageContainer : MonoBehaviour
 
     public void HideItem(Vector2 v, AnimationCallBack callback = null)
     {
+        if (curLevel != null)
+        {
+            curLevel.EndLevel();
+        }
         MaskAnimation.InitSize = 0;
         MaskAnimation.EndSize = 3;
         UF.SetPosition(MaskAnimation.transform, v);

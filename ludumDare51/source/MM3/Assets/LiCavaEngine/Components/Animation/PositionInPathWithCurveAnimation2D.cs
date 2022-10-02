@@ -12,6 +12,7 @@ public class PositionInPathWithCurveAnimation2D : MonoBehaviour
     public Vector2 initPosition;
     public Vector2 endPosition;
     public AnimationStatic.endType endType;
+    public string initSound;
 
     private float counter;
     private BoolCountroler stop;
@@ -21,6 +22,11 @@ public class PositionInPathWithCurveAnimation2D : MonoBehaviour
     private float dt;
     private bool onBack;
     private AnimationCallBack callBack;
+
+    public void SetCallBack(AnimationCallBack callback)
+    {
+        callBack = callback;
+    }
     public bool Pause
     {
         get { return pause.DefaultValue; }
@@ -77,6 +83,10 @@ public class PositionInPathWithCurveAnimation2D : MonoBehaviour
             if (delay > 0)
             {
                 delay -= dt;
+                if (delay <= 0)
+                {
+                    SoundManager.PlaySound(initSound);
+                }
             }
             else
             {

@@ -485,10 +485,20 @@ static public class UF
 
     static public bool PointInRect(Vector2 point, float x,float y,float w,float h)
     {
-        return (point.x > x && point.x < x + w && point.y > y && point.y < y + h);
+        return (point.x > x && point.x < (x + w) && point.y > y && point.y < (y + h));
     }
     static public bool PointInRect(Vector2 point, Rect r)
     {
         return PointInRect(point,r.x,r.y,r.width,r.height);
+    }
+
+    static public bool Equile(int a,int b,int c,int differ)
+    {
+        return a == b && a == c && a != differ;
+    }
+
+    static public float NomLen(Vector2 v)
+    {
+        return Mathf.Sqrt(v.x * v.x + v.y * v.y);
     }
 }

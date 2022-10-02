@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035152253769264416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.596139, y: 2.7991705, z: -0.4354461}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLayer: 3
   totalTime: 3
+  markDelay: 0.05
   delay: 0
-  Size: 1
+  size: 1
   mainScale:
     serializedVersion: 2
     m_Curve:
@@ -82,3 +83,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   fadeTime: 1
   ScaleTime: 1
+  particalNum: 10
+  boomRound: {fileID: 1572021403878962433, guid: 20191e27d7524c042829c83e915a96d9, type: 3}
+  boomMark: {fileID: 913432985569352388, guid: cfc5ea666eec0304093041347dfba65e, type: 3}
+  boomParticalList:
+  - {fileID: 7904940997479215457, guid: 8f50776673ebb0b45a031d7d83b28640, type: 3}
+  - {fileID: 8214540930929081103, guid: d86e57f9535790c439b832e971e0cc92, type: 3}
+  - {fileID: 2409060582153572125, guid: 741f4fdc143d48043afa33f605b7c4f9, type: 3}
+  scaleAnimation: {fileID: 0}
+  fadeAnimation: {fileID: 0}
+  spriteRenderer: {fileID: 0}

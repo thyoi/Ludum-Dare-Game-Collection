@@ -36,7 +36,12 @@ public class MouseArea : MonoBehaviour
 
     private bool MouseInArea()
     {
-        return UF.PointInRect(MouseManager.MousePosition(), myTransform.position.x + area.x, myTransform.position.y + area.y, area.width, area.height);
+        Vector3 tem = new Vector3(1,1,1);
+        if (transform.parent != null)
+        {
+            tem = transform.parent.localScale;
+        }
+        return UF.PointInRect(MouseManager.MousePosition(), myTransform.position.x + area.x*tem.x, myTransform.position.y + area.y*tem.y, area.width*tem.x, area.height * tem.y);
     }
 
     private void Hover()
@@ -46,4 +51,9 @@ public class MouseArea : MonoBehaviour
             MouseManager.SetMouseSprite(mouseSprites);
         }
     }
+    public void Active()
+    {
+        active = true;
+    }
+
 }
