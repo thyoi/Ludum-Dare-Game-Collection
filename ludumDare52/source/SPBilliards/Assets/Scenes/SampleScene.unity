@@ -4366,6 +4366,10 @@ MonoBehaviour:
   Character: {fileID: 36331104}
   Box: {fileID: 1474900440}
   DiaBox: {fileID: 1435515857}
+  DAreas:
+  - {fileID: 6980813967365909654, guid: 63fc750b1fa00414f846be82ecd44717, type: 3}
+  - {fileID: 6980813967365909654, guid: 8aaf2b9e8df60fa48ba77fea78c3412a, type: 3}
+  - {fileID: 6980813967365909654, guid: bd08400cf1c88134ca57fc7ed3cd9cab, type: 3}
 --- !u!4 &436471814
 Transform:
   m_ObjectHideFlags: 0

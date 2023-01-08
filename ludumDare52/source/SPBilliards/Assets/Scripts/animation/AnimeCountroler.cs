@@ -160,10 +160,7 @@ public class AnimeCountroler : MonoBehaviour
     private void Awake()
     {
         myTransform = transform;
-        if (!Apha.Ignore)
-        {
             mySpriteRenderer = myTransform.GetComponent<SpriteRenderer>();
-        }
         InitProperList();
     }
 

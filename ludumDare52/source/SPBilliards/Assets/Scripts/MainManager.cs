@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MainManager : MonoBehaviour
 {
@@ -207,7 +208,8 @@ public class MainManager : MonoBehaviour
         hitManager.active = true;
         HPBar.StartAnime(HPManager.StartPartical);
         SoundManager.Play("m");
-        startCreateBall();
+        //startCreateBall();
+        StartFinallRound1();
 
     }
 
@@ -220,6 +222,60 @@ public class MainManager : MonoBehaviour
         }
 
     }
+
+
+    public void StartFinallRound1()
+    {
+        ShowCharacter();
+        ShowBox(() =>
+        {
+            characterCountroler.ChangeSprite(Characters[0]);
+            DiaManager.ShowContent("Want something interesting?", () =>
+            {
+                DiaManager.ShowContent("This may be a little difficult.", () =>
+                {
+                    HideBox();
+                    HideCharacter();
+                    Crazy1();
+                });
+            });
+        });
+        
+    }
+
+
+    public void Crazy1()
+    {
+        TimeLine tem = CreateTimeLine();
+        tem.AddCallBack(1, Crazy1_1);
+    }
+
+    public void Crazy1_1()
+    {
+        TimeLine c1 = CreateTimeLine();
+        c1.AddCallBack(0.1f, () => { CreateDArea(new Vector2(-1.67f,1.02f),0); });
+        c1.AddCallBack(0.2f, () => { CreateDArea(new Vector2(-0.56f, 1.02f), 0); });
+        c1.AddCallBack(0.3f, () => { CreateDArea(new Vector2(0, 0.156f), 0); });
+        c1.AddCallBack(0.4f, () => { CreateDArea(new Vector2(-0.56f, -0.7f), 0); });
+        c1.AddCallBack(0.5f, () => { CreateDArea(new Vector2(-1.67f, -0.7f), 0); });
+        c1.AddCallBack(0.6f, () => { CreateDArea(new Vector2(-2.23f, 0.156f), 0); });
+        c1.AddCallBack(0.7f, () => { CreateDArea(new Vector2(-1.11f, 0.156f), 2); });
+    }
+
+
+
+
+
+
+    public void CreateDArea(Vector2 position, int type)
+    {
+        Transform tem = Instantiate(DAreas[type]).transform;
+        tem.transform.position = position;
+        tem.parent = BackEffect.BackGroundTransform();
+    }
+
+    public GameObject[] DAreas;
+
     // Start is called before the first frame update
     void Start()
     {
