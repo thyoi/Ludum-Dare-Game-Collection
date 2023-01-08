@@ -247,19 +247,22 @@ public class MainManager : MonoBehaviour
     public void Crazy1()
     {
         TimeLine tem = CreateTimeLine();
-        tem.AddCallBack(1, Crazy1_1);
+        tem.AddCallBack(1, () => { CreateDArea(new Vector2(0, 0.156f), 2); });
+        tem.AddCallBack(4, () => { Crazy1_1(Vector2.zero); });
+        tem.AddCallBack(7.5f, () => { Crazy1_1(Vector2.right * 2.23f); });
+        tem.AddCallBack(10f, () => { Crazy1_1(Vector2.right * 1.11f); });
     }
 
-    public void Crazy1_1()
+    public void Crazy1_1(Vector2 offSet)
     {
         TimeLine c1 = CreateTimeLine();
-        c1.AddCallBack(0.1f, () => { CreateDArea(new Vector2(-1.67f,1.02f),0); });
-        c1.AddCallBack(0.2f, () => { CreateDArea(new Vector2(-0.56f, 1.02f), 0); });
-        c1.AddCallBack(0.3f, () => { CreateDArea(new Vector2(0, 0.156f), 0); });
-        c1.AddCallBack(0.4f, () => { CreateDArea(new Vector2(-0.56f, -0.7f), 0); });
-        c1.AddCallBack(0.5f, () => { CreateDArea(new Vector2(-1.67f, -0.7f), 0); });
-        c1.AddCallBack(0.6f, () => { CreateDArea(new Vector2(-2.23f, 0.156f), 0); });
-        c1.AddCallBack(0.7f, () => { CreateDArea(new Vector2(-1.11f, 0.156f), 2); });
+        c1.AddCallBack(0.1f, () => { CreateDArea(new Vector2(-1.67f,1.02f)+offSet,0); });
+        c1.AddCallBack(0.2f, () => { CreateDArea(new Vector2(-0.56f, 1.02f) + offSet, 0); });
+        c1.AddCallBack(0.3f, () => { CreateDArea(new Vector2(0, 0.156f) + offSet, 0); });
+        c1.AddCallBack(0.4f, () => { CreateDArea(new Vector2(-0.56f, -0.7f) + offSet, 0); });
+        c1.AddCallBack(0.5f, () => { CreateDArea(new Vector2(-1.67f, -0.7f) + offSet, 0); });
+        c1.AddCallBack(0.6f, () => { CreateDArea(new Vector2(-2.23f, 0.156f) + offSet, 0); });
+        c1.AddCallBack(0.7f, () => { CreateDArea(new Vector2(-1.11f, 0.156f) + offSet, 2); });
     }
 
 
@@ -272,6 +275,7 @@ public class MainManager : MonoBehaviour
         Transform tem = Instantiate(DAreas[type]).transform;
         tem.transform.position = position;
         tem.parent = BackEffect.BackGroundTransform();
+        SoundManager.Play("b5");
     }
 
     public GameObject[] DAreas;
@@ -280,6 +284,12 @@ public class MainManager : MonoBehaviour
     void Start()
     {
         DiaBox.ClickFunction = (Vector2 v) => { DiaManager.Clicked(); return true; };
+        //FastTest();
+    }
+
+    public void FastTest()
+    {
+
     }
 
     // Update is called once per frame

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48aa1f55f234a0b4ca3bf5a73a32b550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeScaleRecive: 0
+  TimeScaleRecive: 1
   positionX:
     Ignore: 1
     End: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   back: {fileID: 6980813967633751437}
   bordA: {fileID: 6980813967291886711}
   backA: {fileID: 6980813967633751475}
-  Size: 1
+  Size: 0.8
   c: {r: 1, g: 0.7127319, b: 0.47843134, a: 1}
 --- !u!1 &6980813967633751474
 GameObject:
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48aa1f55f234a0b4ca3bf5a73a32b550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeScaleRecive: 0
+  TimeScaleRecive: 1
   positionX:
     Ignore: 1
     End: 0

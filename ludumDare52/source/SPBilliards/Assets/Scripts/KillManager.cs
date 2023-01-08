@@ -32,6 +32,7 @@ public class KillManager : MonoBehaviour
         GameObject ttem = Instantiate(RoundKill);
         ttem.transform.GetComponent<RoundKill1>().round = tem;
         BackEffect.BoomAt(p, 0);
+        SoundManager.Play("b3");
     }
 
     // Start is called before the first frame update

@@ -415,4 +415,5 @@ MonoBehaviour:
   ColParticalNum: 10
   ColParticalSize: 0.4
   Sound: ball1
+  SoundKill: b4
   Scroe: 1

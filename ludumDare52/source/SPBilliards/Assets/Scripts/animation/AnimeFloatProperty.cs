@@ -25,6 +25,11 @@ public class AnimeFloatProperty
     public UF.AnimeCallback DelayCallback;
     public LoopMode Loop;
 
+    public float GetProges()
+    {
+        return count / Time;
+    }
+
     public void Copy(AnimeFloatProperty a)
     {
         this.Ignore = a.Ignore;
