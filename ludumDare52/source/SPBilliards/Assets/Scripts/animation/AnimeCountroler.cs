@@ -36,6 +36,24 @@ public class AnimeCountroler : MonoBehaviour
         }
     }
 
+
+    public void SetInitPosition(Vector2 p)
+    {
+        positionX.Init = p.x;
+        positionY.Init = p.y;
+    }
+    public void SetEndPosition(Vector2 p)
+    {
+        positionX.End = p.x;
+        positionY.End = p.y;
+    }
+
+    public void SetPosition(Vector2 init, Vector2 end)
+    {
+        SetInitPosition(init);
+        SetEndPosition(end);
+    }
+
     private void UpdatePosition()
     {
         bool UpdateFlag = false;

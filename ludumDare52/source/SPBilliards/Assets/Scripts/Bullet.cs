@@ -6,13 +6,14 @@ public class Bullet : MonoBehaviour
 {
 
     public bool Active;
-    public float Demage = 30;
+    public float Demage;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
         if (Active)
         {
-            Debug.Log("asd");
+
             BallCountroler tem = collision.gameObject.transform.GetComponent<BallCountroler>();
             if (tem.MainBall)
             {

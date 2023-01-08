@@ -21,6 +21,7 @@ public class DialogManager : MonoBehaviour
     public UF.AnimeCallback CallBack;
     public Color DefaultColor = Color.white;
     public bool Silent;
+    public string sound;
 
 
     private Transform container;
@@ -124,7 +125,7 @@ public class DialogManager : MonoBehaviour
             nextPosition += Vector2.right * (tt.rect.width / 100f + chaDis);
             if (PlaySound && !Silent)
             {
-                SoundManager.Play("char");
+                SoundManager.Play(sound);
             }
         }
         else
@@ -150,7 +151,7 @@ public class DialogManager : MonoBehaviour
         if (c<='z' && c >= 'a') {
             res.GetComponent<SpriteRenderer>().sprite = lower[c - 'a'];
         }
-        else if(c<='Z' && c > 'A')
+        else if(c<='Z' && c >= 'A')
         {
             res.GetComponent<SpriteRenderer>().sprite = Upper[c - 'A'];
         }

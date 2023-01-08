@@ -36,6 +36,7 @@ public class HitManager : MonoBehaviour
     public bool NodeLine;
     public MainManager mainManager;
     public UF.AnimeCallback BallDeadCallBack;
+    public float MoveScale;
 
 
 
@@ -74,6 +75,9 @@ public class HitManager : MonoBehaviour
             BallMain.ResetSprite();
             BackEffect.BoomAt(BallInitPosition, 2);
             SoundManager.Play("live");
+            KillManager.CPK(BallInitPosition, 2, Color.white, 0.1f);
+            BallMain.InvTime = 3.4f;
+            mainManager.CameraShakeOnce();
         }
     }
 
@@ -423,13 +427,13 @@ public class HitManager : MonoBehaviour
             if (hpM.hp < hpM.hpState1)
             {
                 MoveParticalColor = hpM.c1;
-                BallRigidbudy.AddForce(MoveDir * Time.deltaTime, ForceMode2D.Impulse);
+                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * MoveScale, ForceMode2D.Impulse);
                 MoveParticalSize = 0.4f;
             }
             else
             {
                 MoveParticalColor = hpM.c2;
-                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * 1.3f, ForceMode2D.Impulse);
+                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * 1.3f * MoveScale, ForceMode2D.Impulse);
                 MoveParticalSize = 0.6f;
             }
         }
@@ -493,7 +497,7 @@ public class HitManager : MonoBehaviour
         {
             MouseRightDown();
         }
-        if (MoveAbility)
+        if (MoveAbility && active && !BallIsDead)
         {
             UpdateMove();
             UpdateMovePartical();

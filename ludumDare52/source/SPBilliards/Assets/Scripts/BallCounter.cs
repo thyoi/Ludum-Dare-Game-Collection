@@ -40,7 +40,7 @@ public class BallCounter : MonoBehaviour
         {
             hitM.PushAbility = true;
             hitM.active = true;
-            MainM.startCreateBall4();
+            MainM.startCreateBall3();
         });
         particalManager.GlobalManager.BoomParticalBust(100, Vector2.zero, Color.white, 4, true);
         SoundManager.Play("ab");

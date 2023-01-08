@@ -215,7 +215,7 @@ MonoBehaviour:
     KeepCallback: 0
   ScaleX:
     Ignore: 0
-    End: 2.5
+    End: 2
     Init: 1
     Time: 50
     Delay: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
     KeepCallback: 0
   ScaleY:
     Ignore: 0
-    End: 2.5
+    End: 2
     Init: 1
     Time: 50
     Delay: 0

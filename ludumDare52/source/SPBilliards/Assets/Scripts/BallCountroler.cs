@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
+
 
 public class BallCountroler : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class BallCountroler : MonoBehaviour
     public int Scroe;
     public bool MoveBall;
     public bool PushBall;
+    public float InvTime;
 
 
     private Vector2 ballArtOffset;
@@ -105,21 +106,32 @@ public class BallCountroler : MonoBehaviour
             
             
         }
+
+        if (InvTime > 0)
+        {
+            InvTime -= Time.deltaTime;
+        }
     }
 
     public void Killed()
     {
-        particalManager.GlobalManager.CreateShinePartical(transform.position, ParticalSize, MainColor, true);
-        transform.position = new Vector2(100, 100);
-        SoundManager.Play(SoundKill);
-        if (HoleCallBack != null)
+        if (InvTime <= 0)
         {
-            HoleCallBack();
+            particalManager.GlobalManager.CreateShinePartical(transform.position, ParticalSize, MainColor, true);
+            transform.position = new Vector2(100, 100);
+            SoundManager.Play(SoundKill);
+            if (HoleCallBack != null)
+            {
+                HoleCallBack();
 
-        }
-        if (!Keep)
-        {
-            Destroy(gameObject);
+            }
+            if (!Keep)
+            {
+                Destroy(gameObject);
+            }
+            if (MainBall)
+            {
+            }
         }
     }
 
@@ -135,5 +147,4 @@ public class BallCountroler : MonoBehaviour
         particalManager.GlobalManager.SideParticalBust(ColParticalNum, collision.contacts[0].point,MainColor
             , ColParticalSize * Mathf.Lerp(0.6f,2,collision.relativeVelocity.magnitude/8), collision.relativeVelocity,true);
     }
-
 }

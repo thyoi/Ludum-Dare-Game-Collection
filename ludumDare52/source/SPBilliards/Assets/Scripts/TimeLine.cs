@@ -15,7 +15,7 @@ public class TimeLine : MonoBehaviour
 
     public void Init()
     {
-        items = new TimeLineItem[100];
+        items = new TimeLineItem[300];
         itemCount = 0;
         timeCount = 0;
     }

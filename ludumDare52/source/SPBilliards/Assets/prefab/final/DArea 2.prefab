@@ -83,7 +83,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &6980813967291886711
 MonoBehaviour:
@@ -111,6 +111,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   positionY:
     Ignore: 1
     End: 0
@@ -124,6 +125,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   ScaleX:
     Ignore: 0
     End: 0.25
@@ -155,6 +157,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   ScaleY:
     Ignore: 0
     End: 0.25
@@ -186,6 +189,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   Apha:
     Ignore: 1
     End: 0
@@ -217,11 +221,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   RotateZ:
     Ignore: 0
     End: 360
     Init: 0
-    Time: 3
+    Time: 4
     Delay: 0
     Curve:
       serializedVersion: 2
@@ -248,7 +253,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   CallBackProperty: 5
+  KeepCallback: 0
   returnPartical: 0
   active: 1
 --- !u!1 &6980813967365909654
@@ -301,8 +308,8 @@ MonoBehaviour:
   back: {fileID: 6980813967633751437}
   bordA: {fileID: 6980813967291886711}
   backA: {fileID: 6980813967633751475}
-  Size: 1.6
-  c: {r: 0.9716981, g: 0.3386068, b: 0.326082, a: 1}
+  Size: 2.5
+  c: {r: 1, g: 0.18463612, b: 0.53360754, a: 1}
 --- !u!1 &6980813967633751474
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +393,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &6980813967633751475
 MonoBehaviour:
@@ -414,6 +421,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   positionY:
     Ignore: 1
     End: 0
@@ -427,6 +435,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   ScaleX:
     Ignore: 1
     End: 0.25
@@ -458,6 +467,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   ScaleY:
     Ignore: 1
     End: 0.25
@@ -489,6 +499,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 0
+    KeepCallback: 0
   Apha:
     Ignore: 0
     End: 1
@@ -520,6 +531,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 2
+    KeepCallback: 0
   RotateZ:
     Ignore: 1
     End: 360
@@ -551,6 +563,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Loop: 1
+    KeepCallback: 0
   CallBackProperty: 0
+  KeepCallback: 0
   returnPartical: 0
   active: 1

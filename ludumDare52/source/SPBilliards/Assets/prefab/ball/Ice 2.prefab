@@ -217,7 +217,7 @@ MonoBehaviour:
     Ignore: 0
     End: 0.5
     Init: 1.5
-    Time: 20
+    Time: 17
     Delay: 0
     Curve:
       serializedVersion: 2
@@ -249,7 +249,7 @@ MonoBehaviour:
     Ignore: 0
     End: 0.5
     Init: 1.5
-    Time: 20
+    Time: 17
     Delay: 0
     Curve:
       serializedVersion: 2

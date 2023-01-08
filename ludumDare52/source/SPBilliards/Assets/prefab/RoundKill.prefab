@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   round: {fileID: 0}
   col: {fileID: 8597700188325289309}
+  Scale: 1
+  Demage: 100
 --- !u!58 &8597700188325289309
 CircleCollider2D:
   m_ObjectHideFlags: 0
