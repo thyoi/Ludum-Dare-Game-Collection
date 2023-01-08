@@ -24,6 +24,7 @@ public class AnimeFloatProperty
     public UF.AnimeCallback Callback;
     public UF.AnimeCallback DelayCallback;
     public LoopMode Loop;
+    public bool KeepCallback;
 
     public float GetProges()
     {
@@ -86,23 +87,26 @@ public class AnimeFloatProperty
     {
         if (active)
         {
+            UpdateCur();
             if (Delay > 0)
             {
                 Delay -= dt;
                 if (Delay <= 0)
                 {
+                  
                     if (DelayCallback != null)
                     {
                         DelayCallback();
                         DelayCallback = null;
+                        
                     }
                 }
-                return false;
+                return true;
                 
             }
             else
             {
-                UpdateCur();
+                
                 count += dt;
                 if (count >= Time)
                 {
@@ -124,7 +128,10 @@ public class AnimeFloatProperty
                     if (Callback != null)
                     {
                         Callback();
-                        Callback = null;
+                        if (!KeepCallback)
+                        {
+                            Callback = null;
+                        }
                     }
                 }
                 //UpdateCur();

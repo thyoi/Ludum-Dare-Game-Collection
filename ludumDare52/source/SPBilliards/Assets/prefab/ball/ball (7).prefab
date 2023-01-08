@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735629474310117409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.289, y: 3.473, z: -0.3564034}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallArt: {fileID: 735629472767202039}
+  BallArt2: {fileID: 0}
   BallBorade: {fileID: 735629474310117403}
   BallBack: {fileID: 735629474059194910}
   MyTransform: {fileID: 735629474310117408}
@@ -417,3 +418,5 @@ MonoBehaviour:
   Sound: ball1
   SoundKill: b4
   Scroe: 1
+  MoveBall: 0
+  PushBall: 0

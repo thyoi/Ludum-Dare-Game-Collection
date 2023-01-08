@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class HPManager : MonoBehaviour
 {
+    public static HPManager GlobaleManager;
+    public static bool HPD(float d)
+    {
+        GlobaleManager.hp -= d;
+        if (GlobaleManager.hp < 0)
+        {
+            GlobaleManager.hp = 0;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public HPManager()
+    {
+        GlobaleManager = this;
+    }
+
+
     // Start is called before the first frame update
     public Transform mask1;
     public Transform mask2;

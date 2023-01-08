@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class HitManager : MonoBehaviour
 {
     public bool active;
     public bool tur;
+    public bool PushAbility;
+    public bool MoveAbility;
     public bool powerEnough;
     public PoleManager Pole;
     public Transform PoleTransform;
@@ -32,6 +35,7 @@ public class HitManager : MonoBehaviour
     public AnimeCountroler[] Nodes;
     public bool NodeLine;
     public MainManager mainManager;
+    public UF.AnimeCallback BallDeadCallBack;
 
 
 
@@ -51,6 +55,10 @@ public class HitManager : MonoBehaviour
     {
         BallIsDead = true;
         hpM.HPDown(50);
+        if (BallDeadCallBack != null)
+        {
+            BallDeadCallBack();
+        }
 
     }
 
@@ -371,6 +379,76 @@ public class HitManager : MonoBehaviour
         powerEnough = true;
     }
 
+    public void MouseRightDown()
+    {
+        if (PushAbility && powerEnough)
+        {
+            KillManager.CPK(MouseManager.MousePosition(), 1.5f, PowerColor);
+            
+            hpM.HPDown(3);
+            if (hpM.hpState == 1)
+            {
+                powerEnough = false;
+            }
+        }
+    }
+
+    public float moveParticalTime;
+    private float moveParticalCount;
+    private Vector2 MoveDir;
+    private Color MoveParticalColor;
+    private float MoveParticalSize;
+    public void UpdateMove()
+    {
+            MoveDir = Vector2.zero;
+        if(active && hpM.hp > 1)
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                MoveDir += Vector2.left;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                MoveDir += Vector2.up;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                MoveDir += Vector2.right;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                MoveDir += Vector2.down;
+            }
+            
+            if (hpM.hp < hpM.hpState1)
+            {
+                MoveParticalColor = hpM.c1;
+                BallRigidbudy.AddForce(MoveDir * Time.deltaTime, ForceMode2D.Impulse);
+                MoveParticalSize = 0.4f;
+            }
+            else
+            {
+                MoveParticalColor = hpM.c2;
+                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * 1.3f, ForceMode2D.Impulse);
+                MoveParticalSize = 0.6f;
+            }
+        }
+
+    }
+    public void UpdateMovePartical()
+    {
+        if (MoveDir!= Vector2.zero)
+        {
+            moveParticalCount += Time.deltaTime;
+            if (moveParticalCount >= moveParticalTime)
+            {
+                moveParticalCount = 0;
+                particalManager.GlobalManager.BoomParticalBust(1, BollPosition.position, MoveParticalColor, MoveParticalSize,true);
+            }
+            hpM.HPDown(8 * Time.deltaTime);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -385,6 +463,8 @@ public class HitManager : MonoBehaviour
             Nodes[i].transform.localScale = new Vector2(tt, tt);
         }
     }
+
+    
 
 
     // Update is called once per frame
@@ -409,8 +489,15 @@ public class HitManager : MonoBehaviour
         WiggleOffset.Update(TimeManager.DT());
         UpdateMask();
         UpdateForce();
-
-
+        if (Input.GetMouseButtonDown(1))
+        {
+            MouseRightDown();
+        }
+        if (MoveAbility)
+        {
+            UpdateMove();
+            UpdateMovePartical();
+        }
         
     }
 }

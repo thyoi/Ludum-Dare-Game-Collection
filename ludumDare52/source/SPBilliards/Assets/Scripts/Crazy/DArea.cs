@@ -17,7 +17,7 @@ public class DArea : MonoBehaviour
         Color tem = c;
         tem.a = 0;
         bord.color = c;
-        back.color = c;
+        back.color = tem;
         bordA.ScaleX.End *= Size;
         bordA.ScaleY.End *= Size;
         bordA.StartAnime(StartBoom);

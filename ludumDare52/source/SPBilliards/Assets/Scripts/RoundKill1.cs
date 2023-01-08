@@ -8,6 +8,8 @@ public class RoundKill1 : MonoBehaviour
 
     public Transform round;
     public CircleCollider2D col;
+    public float Scale = 1;
+    public float Demage = 30;
     void Start()
     {
         
@@ -19,8 +21,8 @@ public class RoundKill1 : MonoBehaviour
         if (round != null)
         {
             transform.position = round.position;
-            col.radius = 3* round.localScale.x;
-            if (round.transform.GetComponent<AnimeCountroler>().ScaleX.GetProges() > 0.5f)
+            col.radius = 2* round.localScale.x * Scale;
+            if (round.transform.GetComponent<AnimeCountroler>().ScaleX.GetProges() > 0.25f)
             {
                 Destroy(gameObject);
             }
@@ -38,7 +40,17 @@ public class RoundKill1 : MonoBehaviour
         BallCountroler tem = collision.gameObject.transform.GetComponent<BallCountroler>();
         if(tem != null)
         {
-            tem.Killed();
+            if (tem.MainBall)
+            {
+                if (HPManager.HPD(Demage))
+                {
+                    tem.Killed();
+                }
+            }
+            else
+            {
+                tem.Killed();
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ public class AnimeCountroler : MonoBehaviour
     public AnimeFloatProperty Apha;
     public AnimeFloatProperty RotateZ;
     public int CallBackProperty;
+    public bool KeepCallback;
 
     public bool returnPartical = false;
     public bool active = true;
@@ -132,6 +133,7 @@ public class AnimeCountroler : MonoBehaviour
         active = true;
         StartAnimeProperties(AllAnimeProperty);
         AllAnimeProperty[CallBackProperty].Callback = cb;
+            AllAnimeProperty[CallBackProperty].KeepCallback = KeepCallback;
         if (returnPartical)
         {
             Apha.Callback = () => { particalManager.Return(this); };

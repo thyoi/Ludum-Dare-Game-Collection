@@ -8,6 +8,7 @@ public class BallCountroler : MonoBehaviour
 {
 
     public SpriteRenderer BallArt;
+    public SpriteRenderer BallArt2;
     public SpriteRenderer BallBorade;
     public SpriteRenderer BallBack;
     public Transform MyTransform;
@@ -23,8 +24,12 @@ public class BallCountroler : MonoBehaviour
     public string Sound;
     public string SoundKill;
     public int Scroe;
+    public bool MoveBall;
+    public bool PushBall;
+
 
     private Vector2 ballArtOffset;
+    private Vector2 ballArtOffset2;
     private Vector2 lastPosition;
     private Vector2 lastSpeed;
     private Vector2 size;
@@ -35,11 +40,16 @@ public class BallCountroler : MonoBehaviour
     private void ModPosition()
     {
         ballArtOffset = UF.Vector2Mod(ballArtOffset+size/2, size)-size/2;
+        ballArtOffset2 = UF.Vector2Mod(ballArtOffset2 + size / 2, size) - size / 2;
     }
 
     private void SetOffset(Vector2 o)
     {
         BallArt.transform.localPosition = o;
+        if (BallArt2 != null)
+        {
+            BallArt2.transform.localPosition = ballArtOffset2;
+        }
     }
     private Vector2 GetDistant()
     {
@@ -61,6 +71,7 @@ public class BallCountroler : MonoBehaviour
     void Update()
     {
         ballArtOffset += GetDistant();
+        ballArtOffset2 -= GetDistant();
         lastPosition = MyTransform.position;
         ModPosition();
         SetOffset(ballArtOffset);
@@ -70,7 +81,7 @@ public class BallCountroler : MonoBehaviour
             particalManager.GlobalManager.BoomParticalBust(ParticalNum, tem, MainColor, ParticalSize*0.7f,true);
 
             particalManager.GlobalManager.CreateShinePartical(tem, ParticalSize, MainColor, true) ;
-
+            BallCounter.NB(this);
 
             if (MainBall)
             {
@@ -120,7 +131,7 @@ public class BallCountroler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SoundManager.Play("hit", Mathf.Lerp(0.2f, 0.5f, collision.relativeVelocity.magnitude / 8));
+        SoundManager.Play("hit", Mathf.Lerp(0.05f, 0.08f, collision.relativeVelocity.magnitude / 8));
         particalManager.GlobalManager.SideParticalBust(ColParticalNum, collision.contacts[0].point,MainColor
             , ColParticalSize * Mathf.Lerp(0.6f,2,collision.relativeVelocity.magnitude/8), collision.relativeVelocity,true);
     }

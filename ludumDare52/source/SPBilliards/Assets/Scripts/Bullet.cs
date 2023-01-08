@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     public bool Active;
+    public float Demage = 30;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
@@ -13,7 +14,14 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("asd");
             BallCountroler tem = collision.gameObject.transform.GetComponent<BallCountroler>();
-            if (tem != null)
+            if (tem.MainBall)
+            {
+                if (HPManager.HPD(Demage))
+                {
+                    tem.Killed();
+                }
+            }
+            else
             {
                 tem.Killed();
             }

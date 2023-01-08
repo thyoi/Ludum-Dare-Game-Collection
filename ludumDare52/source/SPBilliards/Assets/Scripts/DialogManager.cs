@@ -7,6 +7,7 @@ public class DialogManager : MonoBehaviour
     public Sprite[] lower;
     public Sprite[] Upper;
     public Sprite[] mark;
+    public Sprite[] num;
     public GameObject ChaPrefab;
     public GameObject empty;
 
@@ -18,6 +19,9 @@ public class DialogManager : MonoBehaviour
 
     public string content;
     public UF.AnimeCallback CallBack;
+    public Color DefaultColor = Color.white;
+    public bool Silent;
+
 
     private Transform container;
     private float showCount;
@@ -28,21 +32,25 @@ public class DialogManager : MonoBehaviour
     private bool PlaySound;
 
     private float dt;
+    private bool auto;
 
     public void Clicked()
     {
-        if (onShow)
+        if (!auto)
         {
-            showTime = 0;
-            PlaySound = false;
-        }
-        if (finish)
-        {
-            
-            finish = false;
-            if(CallBack!= null)
+            if (onShow)
             {
-                CallBack();
+                showTime = 0;
+                PlaySound = false;
+            }
+            if (finish)
+            {
+
+                finish = false;
+                if (CallBack != null)
+                {
+                    CallBack();
+                }
             }
         }
     }
@@ -57,7 +65,7 @@ public class DialogManager : MonoBehaviour
     public void ShowContent(string s,UF.AnimeCallback cb = null)
     {
         clean();
-
+        auto = false;
         PlaySound = true;
         onShow = true;
         finish = false;
@@ -73,6 +81,12 @@ public class DialogManager : MonoBehaviour
         showTime = 0.04f;
     }
 
+    public void ShowContent(string s, bool a,UF.AnimeCallback cb = null)
+    {
+        ShowContent(s, cb);
+        auto = a;
+    }
+
     public void UpdateShow(float t)
     {
         showCount += t;
@@ -85,6 +99,14 @@ public class DialogManager : MonoBehaviour
                 charCount = content.Length-1;
                 onShow = false;
                 finish = true;
+                if (auto)
+                {
+                    finish = false;
+                    if (CallBack != null)
+                    {
+                        CallBack();
+                    }
+                }
 
             }
             SetCharacter(content[charCount]);
@@ -100,7 +122,7 @@ public class DialogManager : MonoBehaviour
         if (tt != null)
         {
             nextPosition += Vector2.right * (tt.rect.width / 100f + chaDis);
-            if (PlaySound)
+            if (PlaySound && !Silent)
             {
                 SoundManager.Play("char");
             }
@@ -132,6 +154,10 @@ public class DialogManager : MonoBehaviour
         {
             res.GetComponent<SpriteRenderer>().sprite = Upper[c - 'A'];
         }
+        else if(c<='9' && c >= '0')
+        {
+            res.GetComponent<SpriteRenderer>().sprite = num[c - '0'];
+        }
         else if(c == ',')
         {
             res.GetComponent<SpriteRenderer>().sprite = mark[0];
@@ -148,10 +174,15 @@ public class DialogManager : MonoBehaviour
         {
             res.GetComponent<SpriteRenderer>().sprite = mark[3];
         }
+        else if (c == '\'')
+        {
+            res.GetComponent<SpriteRenderer>().sprite = mark[4];
+        }
         else
         {
             res.GetComponent<SpriteRenderer>().sprite = null;
         }
+        res.GetComponent<SpriteRenderer>().color = DefaultColor;
         return res;
     }
 

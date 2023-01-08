@@ -301,7 +301,7 @@ MonoBehaviour:
   back: {fileID: 6980813967633751437}
   bordA: {fileID: 6980813967291886711}
   backA: {fileID: 6980813967633751475}
-  Size: 1.1
+  Size: 1.3
   c: {r: 1, g: 0.4523641, b: 0.38274932, a: 1}
 --- !u!1 &6980813967633751474
 GameObject:
