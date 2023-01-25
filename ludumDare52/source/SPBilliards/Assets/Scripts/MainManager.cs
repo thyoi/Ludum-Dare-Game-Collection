@@ -22,6 +22,9 @@ public class MainManager : MonoBehaviour
     public HitManager hitManager;
     public AnimeCountroler HPBar;
     public HPManager HPManager;
+    public ProcessBar ProBar;
+    public AnimeCountroler ProBarAnime;
+    public GoalCountroler GoalC;
     public Transform[] Balls1;
     public GameObject[] BallPerfabs;
     public GameObject TimeLinePrefab;
@@ -297,6 +300,7 @@ public class MainManager : MonoBehaviour
         HideCharacter();
         hitManager.active = true;
         HPBar.StartAnime(HPManager.StartPartical);
+        ProBarAnime.StartAnime();
         SoundManager.Play("m");
         startCreateBall();
         //StartFinallRound1();
@@ -316,14 +320,16 @@ public class MainManager : MonoBehaviour
         //BallCounter.SetCallBackM(0, () => { ChaPutBalls(new int[5] { 4, 4, 20, 20, 21 }, new Vector2(0, 0.156f), 0.3f, 1, false); });
         //BallCounter.SetCallBackM(0, () => { ChaPutBalls(new int[5] { 17, 17, 18, 18, 19 }, new Vector2(-1.3f, 0.156f), 1.3f, 3); });
 
+        
 
-
-        BallCounter.SetCallBackM(2, () => { ChaPutBalls(new int[4] { 7, 7, 7, 1 }, new Vector2(-2f, 0.156f), 0.3f, 0); });
-        BallCounter.SetCallBackM(7, () => { ChaPutBalls(new int[5] { 5, 6, 7, 7, 1 }, new Vector2(2f, 0.156f), 0.5f, 0); });
-        BallCounter.SetCallBackM(14, () => { ChaPutBalls(new int[5] { 8, 9, 10, 11, 12 }, new Vector2(0, 0.156f), 0.25f, 0); });
+        BallCounter.SetCallBackM(2, () => { ChaPutBalls(new int[4] { 7, 7, 7, 1 }, new Vector2(-2f, 0.156f), 0.3f, 0);ProBar.NextStage(); GoalC.InitPointCount(5); });
+        BallCounter.SetCallBackM(7, () => { ChaPutBalls(new int[5] { 5, 6, 7, 7, 1 }, new Vector2(2f, 0.156f), 0.5f, 0); ProBar.NextStage(); GoalC.InitPointCount(7); });
+        BallCounter.SetCallBackM(14, () => { ChaPutBalls(new int[5] { 8, 9, 10, 11, 12 }, new Vector2(0, 0.156f), 0.25f, 0); ProBar.NextStage(); GoalC.InitPointCount(6); });
         BallCounter.SetCallBackM(20, () =>
         {
+            GoalC.InitSPBall(4);
             ShowCharacter();
+            ProBar.NextStage();
             ShowBox(() =>
             {
                 DiaManager.ShowContent("I have found a kind of ball that can move on its own.          \nThis might be more interesting", () =>
@@ -333,46 +339,51 @@ public class MainManager : MonoBehaviour
                 });
             });
         });
+        GoalC.InitPointCount(3);
     }
 
 
     public void startCreateBall2()
     {
+        ProBar.NextStage();
         ChaPutBalls(new int[8] { 0, 1, 1, 2, 7, 13, 8, 5 }, new Vector2(0, 0.156f), 1, 0, true,true
-            , () => {
-
-                BallCounter.SetCallBackM(12, () => { ChaPutBalls(new int[5] { 14, 16, 16, 16, 16 }, new Vector2(-0.3f, 0.156f), 0.7f, 2); });
-                BallCounter.SetCallBackM(35, () => { ChaPutBalls(new int[5] { 17, 17, 18, 18, 19 }, new Vector2(0f, 0.156f), 1.3f, 3); });
-                BallCounter.SetCallBackM(50, () => 
+            , null);
+        BallCounter.SetCallBackM(12, () => { ChaPutBalls(new int[5] { 14, 16, 16, 16, 16 }, new Vector2(-0.3f, 0.156f), 0.7f, 2); ProBar.NextStage(); GoalC.InitPointCount(22); });
+        BallCounter.SetCallBackM(35, () => { ChaPutBalls(new int[5] { 17, 17, 18, 18, 19 }, new Vector2(0f, 0.156f), 1.3f, 3); ProBar.NextStage(); GoalC.InitPointCount(15); });
+        BallCounter.SetCallBackM(50, () =>
+        {
+            GoalC.InitSPBall(3);
+            ProBar.NextStage();
+            ShowCharacter();
+            ShowBox(() =>
+            {
+                DiaManager.ShowContent("It would be more interesting \nif there was a shock wave", () =>
                 {
-                    ShowCharacter();
-                    ShowBox(() =>
-                    {
-                        DiaManager.ShowContent("It would be more interesting \nif there was a shock wave", () =>
-                        {
-                            HideBox();
-                            ChaPutBalls(new int[5] { 4, 4,20, 20,21 }, new Vector2(0, 0.156f), 0.25f, 1, false);
-                        });
-                    });
+                    HideBox();
+                    ChaPutBalls(new int[5] { 4, 4, 20, 20, 21 }, new Vector2(0, 0.156f), 0.25f, 1, false);
                 });
-
             });
+        });
+        GoalC.InitPointCount(13);
     }
 
     public void startCreateBall3()
     {
-        ChaPutBalls(new int[9] { 0, 16, 16, 2, 7, 13, 8, 5 ,4}, new Vector2(0, 0.156f), 0.6f, 0, true,true, () =>
-        {
-            BallCounter.SetCallBackM(22, () => { ChaPutBalls(new int[5] { 8, 9, 10, 11, 12 }, new Vector2(-1f, 0.156f), 0.3f, 2); });
-            BallCounter.SetCallBackM(34, () => { ChaPutBalls(new int[8] {0,17,16,18,0,17,0,18}, new Vector2(1f, 0.156f), 0.5f, 2); });
-            BallCounter.SetCallBackM(60, () => { ChaPutBalls(new int[20] { 0,0,1,1,6,6,6,7,7,1,1,6,6,7,16,16,16,2,19,19}, new Vector2(0, 0.156f), 1f, 2); });
-            BallCounter.SetCallBackM(130, startCreateBall4);
-        });
+        
+        ProBar.NextStage();
+        ChaPutBalls(new int[9] { 0, 16, 16, 2, 7, 13, 8, 5 ,4}, new Vector2(0, 0.156f), 0.6f, 0, true,true,null);
+        BallCounter.SetCallBackM(22, () => { ChaPutBalls(new int[5] { 8, 9, 10, 11, 12 }, new Vector2(-1f, 0.156f), 0.3f, 2); ProBar.NextStage(); GoalC.InitPointCount(12); });
+        BallCounter.SetCallBackM(34, () => { ChaPutBalls(new int[8] { 0, 17, 16, 18, 0, 17, 0, 18 }, new Vector2(1f, 0.156f), 0.5f, 2); ProBar.NextStage(); });
+        BallCounter.SetCallBackM(60, () => { ChaPutBalls(new int[20] { 0, 0, 1, 1, 6, 6, 6, 7, 7, 1, 1, 6, 6, 7, 16, 16, 16, 2, 19, 19 }, new Vector2(0, 0.156f), 1f, 2); ProBar.NextStage(); GoalC.InitPointCount(26); });
+        BallCounter.SetCallBackM(130, startCreateBall4);
+        GoalC.InitPointCount(23);
     }
 
 
     public void startCreateBall4()
     {
+       
+        ProBar.NextStage();
         ShowCharacter();
         ShowBox(() =>
         {
@@ -382,35 +393,43 @@ public class MainManager : MonoBehaviour
                 ChaPutBalls(new int[19] { 20,15,8,9,20,15,21,16,21,10, 17, 18, 14, 20, 21, 11, 12, 18, 17 }, new Vector2(0, 0.156f), 0.9f, 1, false);
                 ChaPutBalls(new int[9] { 17,18,14,20,21,11,12,18,17 }, new Vector2(0, 0.156f), 0.5f, 1, false,true,() =>
                 {
-                    BallCounter.SetCallBackM(38, () => 
-                    { 
-                        ChaPutBalls(new int[10] { 8,9,10,11,12,8,9,10,11,12 }, new Vector2(-1.3f, 0.156f), 0.5f, 2);
-                        ChaPutBalls(new int[4] {4,20,16,16}, new Vector2(-1.3f, 0.156f), 0.5f, 2);
-                        ChaPutBalls(new int[10] { 17,18,17,18,17,18,17,18,17,18 }, new Vector2(1.3f, 0.156f), 0.5f, 2);
-                        ChaPutBalls(new int[4] { 20, 4, 16, 16 }, new Vector2(1.3f, 0.156f), 0.5f, 2);
-                    });
-                    BallCounter.SetCallBackM(120, () =>
-                    {
-                        TimeLine tem = CreateTimeLine();
-                        tem.AddCallBack(0, () =>
-                        {
-                            ChaPutBalls(new int[10] { 8, 9, 10, 11, 12, 8, 9, 10, 11, 12 }, new Vector2(-1.3f, 0.156f), 1f, 2,true,false,null);
-                        });
-                        tem.AddCallBack(0.1f, () =>
-                        {
-                            ChaPutBalls(new int[10] { 8, 9, 10, 11, 12, 8, 9, 10, 11, 12 }, new Vector2(1.3f, 0.156f), 1f, 2, false,false, null);
-                        });
-                        tem.AddCallBack(0.2f, () =>
-                        {
-                            ChaPutBalls(new int[6] { 20, 21, 20, 21, 20, 21 }, new Vector2(1.3f, 0.156f), 1f, 2, false, true,null);
-                        });
-                    });
                     BallCounter.SetCallBackM(250, () => {
+                        ProBar.NextStage();
+                        GoalC.InitPointCount(130);
                         startCreateBall5();
                     });
                 });
             });
         });
+        BallCounter.SetCallBackM(38, () =>
+        {
+            ChaPutBalls(new int[10] { 8, 9, 10, 11, 12, 8, 9, 10, 11, 12 }, new Vector2(-1.3f, 0.156f), 0.5f, 2);
+            ChaPutBalls(new int[4] { 4, 20, 16, 16 }, new Vector2(-1.3f, 0.156f), 0.5f, 2);
+            ChaPutBalls(new int[10] { 17, 18, 17, 18, 17, 18, 17, 18, 17, 18 }, new Vector2(1.3f, 0.156f), 0.5f, 2);
+            ChaPutBalls(new int[4] { 20, 4, 16, 16 }, new Vector2(1.3f, 0.156f), 0.5f, 2);
+            ProBar.NextStage();
+            GoalC.InitPointCount(39);
+        });
+        BallCounter.SetCallBackM(120, () =>
+        {
+            ProBar.NextStage();
+            GoalC.InitPointCount(82);
+            TimeLine tem = CreateTimeLine();
+            tem.AddCallBack(0, () =>
+            {
+                ChaPutBalls(new int[10] { 8, 9, 10, 11, 12, 8, 9, 10, 11, 12 }, new Vector2(-1.3f, 0.156f), 1f, 2, true, false, null);
+            });
+            tem.AddCallBack(0.1f, () =>
+            {
+                ChaPutBalls(new int[10] { 8, 9, 10, 11, 12, 8, 9, 10, 11, 12 }, new Vector2(1.3f, 0.156f), 1f, 2, false, false, null);
+            });
+            tem.AddCallBack(0.2f, () =>
+            {
+                ChaPutBalls(new int[6] { 20, 21, 20, 21, 20, 21 }, new Vector2(1.3f, 0.156f), 1f, 2, false, true, null);
+            });
+        });
+        
+        GoalC.InitPointCount(70);
     }
 
     public void startCreateBall5()
@@ -424,6 +443,7 @@ public class MainManager : MonoBehaviour
                 {
                     TimeLine tem = CreateTimeLine();
                     tem.AddCallBack(6, StartFinallRound1);
+                    HideBox();
                 });
             });
         });
@@ -466,6 +486,7 @@ public class MainManager : MonoBehaviour
 
     public void StartFinallRound1()
     {
+        GoalC.SetSpell("Stay alive", Color.white);
         ShowCharacter();
         characterCountroler.ChangeSprite(Characters[0]);
         ShowBox(() =>
@@ -567,6 +588,8 @@ public class MainManager : MonoBehaviour
 
     public void InitCrazy2()
     {
+        ProBar.NextStage();
+        GoalC.SetSpell("Swamp of Death", DeathSwamp);
         hitManager.BallDeadCallBack = null;
         ShowCharacter();
         ShowBox(() =>
@@ -637,9 +660,9 @@ public class MainManager : MonoBehaviour
         tem.AddCallBack(0, Crazy2_1);
         tem.AddCallBack(5.6f, Crazy2_2);
         tem.AddCallBack(15f, Crazy2_4);
-        tem.AddCallBack(22, Crazy2_5);
-        tem.AddCallBack(32f, Crazy2_3);
-        tem.AddCallBack(42, InitCrazy3);
+        tem.AddCallBack(22f, Crazy2_5);
+        tem.AddCallBack(32.5f, Crazy2_3);
+        tem.AddCallBack(42.5f, InitCrazy3);
     }
 
     public void Crazy2_1()
@@ -811,7 +834,7 @@ public class MainManager : MonoBehaviour
         tem.AddCallBack(0f, Crazy2_5_1);
         tem.AddCallBack(0.2f, () => { CreateNBall(IntList(25, 3), new Vector2(-2.4f, 0.156f), 0.2f, -Mathf.PI / 6, 0); });
         tem.AddCallBack(1.1f, () => { CreateDArea(new Vector2(-2.4f, 0.156f),0); });
-        tem.AddCallBack(2.4f, Crazy2_5_2);
+        tem.AddCallBack(2.9f, Crazy2_5_2);
 
     }
     public void Crazy2_5_1()
@@ -842,6 +865,8 @@ public class MainManager : MonoBehaviour
 
     public void InitCrazy3()
     {
+        GoalC.SetSpell("D:E:T:E:R:M:I:N:A:T:I:O:N:", DeterColor);
+        ProBar.NextStage();
         hitManager.BallDeadCallBack = null;
         characterCountroler.ChangeSprite(Characters[6]);
         ShowCharacter();
@@ -1186,6 +1211,8 @@ public class MainManager : MonoBehaviour
 
     public void EndGame()
     {
+        ProBar.NextStage();
+        hitManager.BallDeadCallBack = null;
         characterCountroler.ChangeSprite(Characters[0]);
         ShowCharacter();
         ShowBox(() =>
@@ -1301,14 +1328,15 @@ public class MainManager : MonoBehaviour
         hitManager.PushAbility = true;
         hitManager.MoveAbility = true;
         HPBar.StartAnime(HPManager.StartPartical);
-        //RecoverFromCrazy2();
+        RecoverFromCrazy4();
         //ReCoverFromC1_1();
+        //startCreateBall4();
         BallCounter.GlobleManager.PushBallCount = 10;
         BallCounter.GlobleManager.MoveBallCount = 10;
         //startCreateBall4();
         poleCount = 5;
         //Mainball.InvTime = 1000;
-        InitCrazy4();
+        //InitCrazy2();
         
     }
 

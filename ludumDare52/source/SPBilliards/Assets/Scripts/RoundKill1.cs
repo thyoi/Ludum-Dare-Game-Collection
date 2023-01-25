@@ -21,7 +21,7 @@ public class RoundKill1 : MonoBehaviour
         if (round != null)
         {
             transform.position = round.position;
-            col.radius = 1.8f* round.localScale.x * Scale;
+            col.radius = 1.5f* round.localScale.x * Scale;
             if (round.transform.GetComponent<AnimeCountroler>().ScaleX.GetProges() > 0.25f)
             {
                 Destroy(gameObject);

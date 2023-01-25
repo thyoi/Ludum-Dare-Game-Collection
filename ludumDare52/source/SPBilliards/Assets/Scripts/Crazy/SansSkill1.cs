@@ -52,6 +52,7 @@ public class SansSkill1 : MonoBehaviour
 
     public void Bones2_1()
     {
+        Bones2.transform.position = new Vector2(-100, -0.5868f);
         Bones2.StartAnime();
     }
 

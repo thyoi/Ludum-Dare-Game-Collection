@@ -90,29 +90,44 @@ public class DialogManager : MonoBehaviour
 
     public void UpdateShow(float t)
     {
-        showCount += t;
-        if (showCount >= showTime)
+        if (showTime > 0)
         {
-            showCount = 0;
-            charCount++;
-            if (charCount >= content.Length-1)
+            showCount += t;
+            if (showCount >= showTime)
             {
-                charCount = content.Length-1;
-                onShow = false;
-                finish = true;
-                if (auto)
-                {
-                    finish = false;
-                    if (CallBack != null)
-                    {
-                        CallBack();
-                    }
-                }
+                showCount = 0;
 
+                NewChar();
             }
-            SetCharacter(content[charCount]);
+        }
+        else
+        {
+            for(int i = 0; i < content.Length - 1 - charCount; i++)
+            {
+                NewChar();
+            }
+        }
+    }
+
+    public void NewChar()
+    {
+        charCount++;
+        if (charCount >= content.Length - 1)
+        {
+            charCount = content.Length - 1;
+            onShow = false;
+            finish = true;
+            if (auto)
+            {
+                finish = false;
+                if (CallBack != null)
+                {
+                    CallBack();
+                }
+            }
 
         }
+        SetCharacter(content[charCount]);
     }
 
     public void SetCharacter(char c)

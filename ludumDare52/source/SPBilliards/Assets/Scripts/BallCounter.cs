@@ -9,16 +9,31 @@ public class BallCounter : MonoBehaviour
     public DialogManager Dia;
     public UF.AnimeCallback[] BallCallBack = new UF.AnimeCallback[1000];
     public SpriteRenderer border;
-    private int cbCount = 0;
+    private int cbCount = -1;
     public AnimeCountroler ac;
     public AnimeCountroler ability1;
     public AnimeCountroler ability2;
     public HitManager hitM;
     public Transform MainBall;
     public MainManager MainM;
+    public GoalCountroler GoalC;
 
     public  int MoveBallCount = 0;
     public  int PushBallCount = 0;
+
+
+    public int GetNextScore()
+    {
+        
+        for(int i = cbCount+1; i < 999; i++)
+        {
+            if (BallCallBack[i] != null)
+            {
+                return i-BallNum+1;
+            }
+        }
+        return 0;
+    }
 
     public void MoveAbilityUnlock()
     {
@@ -59,7 +74,7 @@ public class BallCounter : MonoBehaviour
 
     public static void SetCallBackM(int n, UF.AnimeCallback cb)
     {
-        GlobleManager.BallCallBack[GlobleManager.cbCount+n] = cb;
+        GlobleManager.BallCallBack[GlobleManager.cbCount+n+1] = cb;
     }
 
     public static Transform MainBallTransform()
@@ -69,6 +84,7 @@ public class BallCounter : MonoBehaviour
 
     public void NextCB()
     {
+        cbCount++;
         if (BallCallBack[cbCount] != null)
         {
             BallCallBack[cbCount]();
@@ -76,7 +92,7 @@ public class BallCounter : MonoBehaviour
             
 
         }
-        cbCount++;
+        
     }
 
 
@@ -103,7 +119,8 @@ public class BallCounter : MonoBehaviour
             if (b.MoveBall)
             {
                 MoveBallCount++;
-                if(MoveBallCount == 4)
+                GoalC.GetSPBall(b.Scroe, b.MainColor);
+                if (MoveBallCount == 4)
                 {
                     MoveAbilityUnlock();
                 }
@@ -111,17 +128,19 @@ public class BallCounter : MonoBehaviour
             if (b.PushBall)
             {
                 PushBallCount++;
+                GoalC.GetSPBall(b.Scroe, b.MainColor);
                 if(PushBallCount == 3)
                 {
                     PushAbilityUnlock();
                 }
             }
             BallNum += b.Scroe;
+            GoalC.GetPoint(b.Scroe, b.MainColor);
             for (int i = 0; i < b.Scroe; i++)
             {
                 NextCB();
             }
-         
+            
             Bomm(1.1f+b.Scroe*0.1f);
             border.color = b.MainColor;
             Dia.DefaultColor = b.MainColor;

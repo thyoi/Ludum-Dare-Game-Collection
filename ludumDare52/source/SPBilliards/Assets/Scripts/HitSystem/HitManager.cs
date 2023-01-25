@@ -37,6 +37,8 @@ public class HitManager : MonoBehaviour
     public MainManager mainManager;
     public UF.AnimeCallback BallDeadCallBack;
     public float MoveScale;
+    public bool EasyMove;
+    public float MaxSpeed;
 
 
 
@@ -423,22 +425,37 @@ public class HitManager : MonoBehaviour
             {
                 MoveDir += Vector2.down;
             }
-            
-            if (hpM.hp < hpM.hpState1)
-            {
-                MoveParticalColor = hpM.c1;
-                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * MoveScale, ForceMode2D.Impulse);
-                MoveParticalSize = 0.4f;
-            }
-            else
-            {
-                MoveParticalColor = hpM.c2;
-                BallRigidbudy.AddForce(MoveDir * Time.deltaTime * 1.3f * MoveScale, ForceMode2D.Impulse);
-                MoveParticalSize = 0.6f;
-            }
+
+
+                if (hpM.hp < hpM.hpState1)
+                {
+                    MoveParticalColor = hpM.c1;
+                MoveBall(MoveDir, 1);
+                    MoveParticalSize = 0.4f;
+                }
+                else
+                {
+                    MoveParticalColor = hpM.c2;
+                MoveBall(MoveDir, 1.3f);
+                    MoveParticalSize = 0.6f;
+                }
+
         }
 
     }
+
+    public void MoveBall(Vector2 moveDir,float scale)
+    {
+        if (EasyMove)
+        {
+
+        }
+        else
+        {
+            BallRigidbudy.AddForce(MoveDir * Time.deltaTime * scale * MoveScale, ForceMode2D.Impulse);
+        }
+    }
+
     public void UpdateMovePartical()
     {
         if (MoveDir!= Vector2.zero)
