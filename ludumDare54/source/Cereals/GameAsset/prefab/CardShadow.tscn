@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameAsset/Cards/art/other/back.png" type="Texture" id=1]
+[ext_resource path="res://Modules/AnimationExitCountroler/ShrinkDisapper.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, -2.29798, 0, 0, Vector2( 1, 0 ), -0.201774, 0.0, 0, 0 ]
+
+[node name="shadow" type="Node2D"]
+script = ExtResource( 2 )
+AnimationCurve = SubResource( 1 )
+Duration = 0.3
+InitSize = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

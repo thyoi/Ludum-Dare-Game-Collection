@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Modules/ShaderView/shader/blru.tres" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/ten = 8.0
+
+[sub_resource type="ViewportTexture" id=3]
+
+[node name="temSprite1" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 480, 270 )
+texture = SubResource( 3 )
+
+[node name="Viewport1" type="Viewport" parent="."]
+process_priority = -2
+size = Vector2( 960, 540 )
+transparent_bg = true
+render_target_v_flip = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Viewport1"]
+polygon = PoolVector2Array( 397, 108, 265, 187, 303, 280, 421, 396, 544, 398, 643, 295, 640, 169 )

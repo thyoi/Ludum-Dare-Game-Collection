@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+	uniform float ten = 5 ;
+
+void fragment(){
+	//vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	COLOR = texture(TEXTURE, UV) * 0.16;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, TEXTURE_PIXEL_SIZE.y)*ten) * 0.075;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, -TEXTURE_PIXEL_SIZE.y)*ten) * 0.075;
+	COLOR += texture(TEXTURE, UV+vec2(TEXTURE_PIXEL_SIZE.x,0)*ten) * 0.075;
+	COLOR += texture(TEXTURE, UV+vec2(-TEXTURE_PIXEL_SIZE.x,0)*ten) * 0.075;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, TEXTURE_PIXEL_SIZE.y)*ten*2.0) * 0.06;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, -TEXTURE_PIXEL_SIZE.y)*ten*2.0) * 0.06;
+	COLOR += texture(TEXTURE, UV+vec2(TEXTURE_PIXEL_SIZE.x,0)*ten*2.0) * 0.06;
+	COLOR += texture(TEXTURE, UV+vec2(-TEXTURE_PIXEL_SIZE.x,0)*ten*2.0) * 0.06;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, TEXTURE_PIXEL_SIZE.y)*ten*3.0) * 0.045;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, -TEXTURE_PIXEL_SIZE.y)*ten*3.0) * 0.045;
+	COLOR += texture(TEXTURE, UV+vec2(TEXTURE_PIXEL_SIZE.x,0)*ten*3.0) * 0.045;
+	COLOR += texture(TEXTURE, UV+vec2(-TEXTURE_PIXEL_SIZE.x,0)*ten*3.0) * 0.045;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, TEXTURE_PIXEL_SIZE.y)*ten*4.0) * 0.025;
+	COLOR += texture(TEXTURE, UV+vec2(0.0, -TEXTURE_PIXEL_SIZE.y)*ten*4.0) * 0.025;
+	COLOR += texture(TEXTURE, UV+vec2(TEXTURE_PIXEL_SIZE.x,0)*ten*4.0) * 0.025;
+	COLOR += texture(TEXTURE, UV+vec2(-TEXTURE_PIXEL_SIZE.x,0)*ten*4.0) * 0.025;
+}"

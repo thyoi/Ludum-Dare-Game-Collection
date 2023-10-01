@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Modules/INTBackground/ParticalMatrix.gd" type="Script" id=1]
+[ext_resource path="res://Modules/INTBackground/SlotShiftCountroler.gd" type="Script" id=2]
+
+[node name="Matrix3" type="Node2D"]
+script = ExtResource( 1 )
+InitSize = 150.0
+ScreenSize = Vector2( 960, 540 )
+SlotSizeBalance = 1.5
+
+[node name="ShiftCountroler" type="Node" parent="."]
+script = ExtResource( 2 )

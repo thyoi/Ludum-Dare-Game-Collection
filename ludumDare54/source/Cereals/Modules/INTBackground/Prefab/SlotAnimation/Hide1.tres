@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Modules/INTBackground/SlotAnimationIns.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[resource]
+script = ExtResource( 1 )
+HasType = false
+Type_Priority = 5
+Type_Name = "l4"
+Type_Duration = 0.0
+HasSize = true
+Size_Priority = 5
+Size_End = 1.0
+Size_Speed = 10.0
+Size_Duration = 0.3
+Size_PropertyData_Init = 1.0
+Size_PropertyData_End = 0.0
+Size_PropertyData_Duration = 0.3
+Size_PropertyData_Delay = 0.0
+Size_PropertyData_AnimationCurve = SubResource( 1 )
+Size_ResetSpeed = 50.0
+Size_Lock = true

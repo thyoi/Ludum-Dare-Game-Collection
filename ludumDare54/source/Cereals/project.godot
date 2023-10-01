@@ -1,0 +1,203 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AnimationCountroler",
+"language": "GDScript",
+"path": "res://Modules/Animation/AnimationCountroler.gd"
+}, {
+"base": "Resource",
+"class": "AnimationData",
+"language": "GDScript",
+"path": "res://Modules/Animation/AnimationData.gd"
+}, {
+"base": "Node",
+"class": "BaseCardContainer",
+"language": "GDScript",
+"path": "res://GameAsset/Cards/BaceCardContainer.gd"
+}, {
+"base": "Resource",
+"class": "FloatEventData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/FloatEventData.gd"
+}, {
+"base": "Reference",
+"class": "FloatFollowAnimation",
+"language": "GDScript",
+"path": "res://Modules/FollowAnimation/FloatFollowAnimation.gd"
+}, {
+"base": "Resource",
+"class": "FloatPropertyData",
+"language": "GDScript",
+"path": "res://Modules/Animation/FloatPropertyData.gd"
+}, {
+"base": "Line2D",
+"class": "LinePartical",
+"language": "GDScript",
+"path": "res://Modules/Partical/LinePartical.gd"
+}, {
+"base": "Node2D",
+"class": "ParticalMatrix",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalMatrix.gd"
+}, {
+"base": "Node",
+"class": "ParticalMatrixManager",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalMatrixManager.gd"
+}, {
+"base": "Node2D",
+"class": "ParticalSlot",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalSlot.gd"
+}, {
+"base": "Polygon2D",
+"class": "PolygonPartical",
+"language": "GDScript",
+"path": "res://Modules/Partical/PolygonPartical.gd"
+}, {
+"base": "Node2D",
+"class": "RoundTrigger",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/RoundTrigger.gd"
+}, {
+"base": "Node2D",
+"class": "ShrinkDisapper",
+"language": "GDScript",
+"path": "res://Modules/AnimationExitCountroler/ShrinkDisapper.gd"
+}, {
+"base": "Reference",
+"class": "SizeEventStack",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/SizeEventStack.gd"
+}, {
+"base": "Reference",
+"class": "SlotAnimationData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotAnimationData.gd"
+}, {
+"base": "Resource",
+"class": "SlotAnimationIns",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotAnimationIns.gd"
+}, {
+"base": "Node",
+"class": "SlotShiftCountroler",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotShiftCountroler.gd"
+}, {
+"base": "Reference",
+"class": "TriggerData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/TriggerData.gd"
+}, {
+"base": "Reference",
+"class": "TriggerGenerator",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/TriggerGenerator.gd"
+}, {
+"base": "Reference",
+"class": "TypeEventData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/TypeEventData.gd"
+}, {
+"base": "Reference",
+"class": "TypeEventStack",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/TypeEventStack.gd"
+}, {
+"base": "Reference",
+"class": "UFD",
+"language": "GDScript",
+"path": "res://Modules/UF/UFD.gd"
+}, {
+"base": "Reference",
+"class": "UFM",
+"language": "GDScript",
+"path": "res://Modules/UF/UFM.gd"
+}, {
+"base": "Reference",
+"class": "Vector2FollowAnimation",
+"language": "GDScript",
+"path": "res://Modules/FollowAnimation/Vector2FollowAnimation.gd"
+}, {
+"base": "Resource",
+"class": "Vector2PropertyData",
+"language": "GDScript",
+"path": "res://Modules/Animation/Vector2PropertyData.gd"
+}, {
+"base": "Node",
+"class": "pg",
+"language": "GDScript",
+"path": "res://Modules/Partical/ParticalGenerator.gd"
+} ]
+_global_script_class_icons={
+"AnimationCountroler": "",
+"AnimationData": "",
+"BaseCardContainer": "",
+"FloatEventData": "",
+"FloatFollowAnimation": "",
+"FloatPropertyData": "",
+"LinePartical": "",
+"ParticalMatrix": "",
+"ParticalMatrixManager": "",
+"ParticalSlot": "",
+"PolygonPartical": "",
+"RoundTrigger": "",
+"ShrinkDisapper": "",
+"SizeEventStack": "",
+"SlotAnimationData": "",
+"SlotAnimationIns": "",
+"SlotShiftCountroler": "",
+"TriggerData": "",
+"TriggerGenerator": "",
+"TypeEventData": "",
+"TypeEventStack": "",
+"UFD": "",
+"UFM": "",
+"Vector2FollowAnimation": "",
+"Vector2PropertyData": "",
+"pg": ""
+}
+
+[application]
+
+config/name="Cereals"
+run/main_scene="res://GameAsset/Cards/prefab/Cards/uno/unoY0.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+TimeManager="*res://Modules/Time/TimeManager.gd"
+ParticalGenerator="*res://Modules/Partical/Prefab/ParticalGenerator.tscn"
+GameEffectManager="*res://GameAsset/GameEffectManager.tscn"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
