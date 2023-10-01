@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Modules/AnimationExitCountroler/ShrinkDisapperAdvance.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, -0.295455, 0, 0, Vector2( 0.626374, 0.790909 ), -0.333812, -0.282025, 1, 0, Vector2( 1, 0 ), -4.96363, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 1.9561, 0, 0, Vector2( 1, 1 ), 0.355347, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 1.37997, 0, 1, Vector2( 0.645598, 0.890909 ), 0.671213, 0.671213, 0, 0, Vector2( 1, 1 ), 0.307817, 0.0, 1, 0 ]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 1, Vector2( 1, 1 ), 0.0, 0.0, 1, 0 ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+RotateMax = 12.0
+AnimationCurve = SubResource( 1 )
+PositionCurve = SubResource( 2 )
+RotationCurve = SubResource( 3 )
+AphaCurve = SubResource( 4 )
+Duration = 1.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -20, -20, -40, 0, 0, 40, 40, 0, 0, -40, -20, -20 )
+width = 20.0
+default_color = Color( 0, 0, 0, 1 )

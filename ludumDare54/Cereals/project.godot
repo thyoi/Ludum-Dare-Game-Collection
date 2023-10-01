@@ -1,0 +1,311 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AnimationCountroler",
+"language": "GDScript",
+"path": "res://Modules/Animation/AnimationCountroler.gd"
+}, {
+"base": "Resource",
+"class": "AnimationData",
+"language": "GDScript",
+"path": "res://Modules/Animation/AnimationData.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BackgroundManager",
+"language": "GDScript",
+"path": "res://GameAsset/BackGroundManager.gd"
+}, {
+"base": "Node",
+"class": "BaseCardContainer",
+"language": "GDScript",
+"path": "res://GameAsset/BaceCardContainer.gd"
+}, {
+"base": "Reference",
+"class": "CardFilter",
+"language": "GDScript",
+"path": "res://GameAsset/CardFilter.gd"
+}, {
+"base": "CanvasLayer",
+"class": "CardHolder",
+"language": "GDScript",
+"path": "res://GameAsset/CardHolder/CardHolder.gd"
+}, {
+"base": "Node",
+"class": "DeathCard",
+"language": "GDScript",
+"path": "res://GameAsset/Cards/allPrefab/DeathCard.gd"
+}, {
+"base": "Node",
+"class": "DelayEvent",
+"language": "GDScript",
+"path": "res://Modules/Time/DelayEvent.gd"
+}, {
+"base": "CanvasLayer",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://Modules/Dialogue/DialogueBox.gd"
+}, {
+"base": "Resource",
+"class": "FloatEventData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/FloatEventData.gd"
+}, {
+"base": "Reference",
+"class": "FloatFollowAnimation",
+"language": "GDScript",
+"path": "res://Modules/FollowAnimation/FloatFollowAnimation.gd"
+}, {
+"base": "Resource",
+"class": "FloatPropertyData",
+"language": "GDScript",
+"path": "res://Modules/Animation/FloatPropertyData.gd"
+}, {
+"base": "Node",
+"class": "GameIniter",
+"language": "GDScript",
+"path": "res://Level/Init/GameIniter.gd"
+}, {
+"base": "Node",
+"class": "InitItemsCountroler",
+"language": "GDScript",
+"path": "res://Level/Init/InitItemsCountroler.gd"
+}, {
+"base": "Line2D",
+"class": "LinePartical",
+"language": "GDScript",
+"path": "res://Modules/Partical/LinePartical.gd"
+}, {
+"base": "CanvasLayer",
+"class": "MouseShowBox",
+"language": "GDScript",
+"path": "res://GameAsset/MouseShowBox.gd"
+}, {
+"base": "Polygon2D",
+"class": "MyButton",
+"language": "GDScript",
+"path": "res://GameAsset/button/MyButton.gd"
+}, {
+"base": "Node",
+"class": "OldMaid",
+"language": "GDScript",
+"path": "res://GameAsset/OldMaid.gd"
+}, {
+"base": "Node2D",
+"class": "ParticalMatrix",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalMatrix.gd"
+}, {
+"base": "Node",
+"class": "ParticalMatrixManager",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalMatrixManager.gd"
+}, {
+"base": "Node2D",
+"class": "ParticalSlot",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/ParticalSlot.gd"
+}, {
+"base": "Polygon2D",
+"class": "PolygonPartical",
+"language": "GDScript",
+"path": "res://Modules/Partical/PolygonPartical.gd"
+}, {
+"base": "Node",
+"class": "Resetter",
+"language": "GDScript",
+"path": "res://GameAsset/Resetter.gd"
+}, {
+"base": "Node",
+"class": "RotateCountroler",
+"language": "GDScript",
+"path": "res://Level/Init/RotateCountroler.gd"
+}, {
+"base": "Line2D",
+"class": "RoundPartical",
+"language": "GDScript",
+"path": "res://Modules/Partical/Spartical/RoundPartical.gd"
+}, {
+"base": "Node2D",
+"class": "RoundTrigger",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/RoundTrigger.gd"
+}, {
+"base": "Node2D",
+"class": "ShrinkDisapper",
+"language": "GDScript",
+"path": "res://Modules/AnimationExitCountroler/ShrinkDisapper.gd"
+}, {
+"base": "Node2D",
+"class": "ShrinkDisapperAdvance",
+"language": "GDScript",
+"path": "res://Modules/AnimationExitCountroler/ShrinkDisapperAdvance.gd"
+}, {
+"base": "Reference",
+"class": "SizeEventStack",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/SizeEventStack.gd"
+}, {
+"base": "Reference",
+"class": "SlotAnimationData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotAnimationData.gd"
+}, {
+"base": "Resource",
+"class": "SlotAnimationIns",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotAnimationIns.gd"
+}, {
+"base": "Node",
+"class": "SlotShiftCountroler",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/SlotShiftCountroler.gd"
+}, {
+"base": "Reference",
+"class": "SoundGroup",
+"language": "GDScript",
+"path": "res://Modules/Sound/SoundGroup.gd"
+}, {
+"base": "Sprite",
+"class": "SpriteParitcal",
+"language": "GDScript",
+"path": "res://Modules/Partical/SpritePartical.gd"
+}, {
+"base": "Reference",
+"class": "TriggerData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/TriggerData.gd"
+}, {
+"base": "Reference",
+"class": "TriggerGenerator",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/TriggerGenerator.gd"
+}, {
+"base": "Reference",
+"class": "TypeEventData",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/TypeEventData.gd"
+}, {
+"base": "Reference",
+"class": "TypeEventStack",
+"language": "GDScript",
+"path": "res://Modules/INTBackground/PropertyEvent/TypeEventStack.gd"
+}, {
+"base": "Reference",
+"class": "UFD",
+"language": "GDScript",
+"path": "res://Modules/UF/UFD.gd"
+}, {
+"base": "Reference",
+"class": "UFM",
+"language": "GDScript",
+"path": "res://Modules/UF/UFM.gd"
+}, {
+"base": "Reference",
+"class": "Vector2FollowAnimation",
+"language": "GDScript",
+"path": "res://Modules/FollowAnimation/Vector2FollowAnimation.gd"
+}, {
+"base": "Resource",
+"class": "Vector2PropertyData",
+"language": "GDScript",
+"path": "res://Modules/Animation/Vector2PropertyData.gd"
+}, {
+"base": "Node",
+"class": "pg",
+"language": "GDScript",
+"path": "res://Modules/Partical/ParticalGenerator.gd"
+} ]
+_global_script_class_icons={
+"AnimationCountroler": "",
+"AnimationData": "",
+"BackgroundManager": "",
+"BaseCardContainer": "",
+"CardFilter": "",
+"CardHolder": "",
+"DeathCard": "",
+"DelayEvent": "",
+"DialogueBox": "",
+"FloatEventData": "",
+"FloatFollowAnimation": "",
+"FloatPropertyData": "",
+"GameIniter": "",
+"InitItemsCountroler": "",
+"LinePartical": "",
+"MouseShowBox": "",
+"MyButton": "",
+"OldMaid": "",
+"ParticalMatrix": "",
+"ParticalMatrixManager": "",
+"ParticalSlot": "",
+"PolygonPartical": "",
+"Resetter": "",
+"RotateCountroler": "",
+"RoundPartical": "",
+"RoundTrigger": "",
+"ShrinkDisapper": "",
+"ShrinkDisapperAdvance": "",
+"SizeEventStack": "",
+"SlotAnimationData": "",
+"SlotAnimationIns": "",
+"SlotShiftCountroler": "",
+"SoundGroup": "",
+"SpriteParitcal": "",
+"TriggerData": "",
+"TriggerGenerator": "",
+"TypeEventData": "",
+"TypeEventStack": "",
+"UFD": "",
+"UFM": "",
+"Vector2FollowAnimation": "",
+"Vector2PropertyData": "",
+"pg": ""
+}
+
+[application]
+
+config/name="Cereals"
+run/main_scene="res://Prefab/Scenes/Main.scn"
+config/icon="res://icon.png"
+
+[autoload]
+
+TimeManager="*res://Modules/Time/TimeManager.gd"
+ParticalGenerator="*res://Modules/Partical/Prefab/ParticalGenerator.tscn"
+SParticalGenerater="*res://Modules/Partical/Spartical/SParticalGenerater.gd"
+CardGenerater="*res://GameAsset/Cards/CardGenerater.gd"
+GameEffectManager="*res://GameAsset/GameEffectManager.tscn"
+MouseManager="*res://GameAsset/MouseManager.tscn"
+CharacterManager="*res://GameAsset/Character/CharacterManager.tscn"
+DialogueManager="*res://Modules/Dialogue/DialogueManager.tscn"
+SoundManager="*res://Modules/Sound/SoundManager.gd"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

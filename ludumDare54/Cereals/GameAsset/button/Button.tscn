@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Modules/Partical/LinePartical.gd" type="Script" id=1]
+[ext_resource path="res://GameAsset/button/MyButton.gd" type="Script" id=2]
+[ext_resource path="res://GameAsset/button/b1.png" type="Texture" id=3]
+
+[node name="Polygon2D" type="Polygon2D"]
+position = Vector2( 369, 211 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 15.0
+default_color = Color( 0.839216, 0.901961, 1, 1 )
+script = ExtResource( 1 )
+Points = PoolVector2Array( -40, -40, 0, -80, 80, 0, 0, 80, -80, 0, -40, -40 )
+DefaultColor = Color( 0.94902, 0.996078, 1, 1 )
+DefaultApha = 1.0
+LineW = 15.0
+InitW = 24.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )

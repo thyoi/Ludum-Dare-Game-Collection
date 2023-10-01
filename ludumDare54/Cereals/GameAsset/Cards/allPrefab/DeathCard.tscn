@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://GameAsset/BaceCardContainer.gd" type="Script" id=1]
+[ext_resource path="res://GameAsset/Cards/art/other/back0.png" type="Texture" id=2]
+[ext_resource path="res://GameAsset/Cards/allPrefab/DeathCard.gd" type="Script" id=3]
+[ext_resource path="res://GameAsset/Cards/art/other/death_back.png" type="Texture" id=4]
+[ext_resource path="res://GameAsset/Cards/art/other/death_l1.png" type="Texture" id=5]
+[ext_resource path="res://GameAsset/Cards/art/other/death_l2.png" type="Texture" id=6]
+[ext_resource path="res://GameAsset/Cards/art/other/death_l4.png" type="Texture" id=7]
+[ext_resource path="res://GameAsset/Cards/art/other/death_l5.png" type="Texture" id=8]
+[ext_resource path="res://GameAsset/Cards/art/other/death_l3.png" type="Texture" id=9]
+
+[sub_resource type="Curve" id=1]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Node" type="Node"]
+script = ExtResource( 3 )
+
+[node name="BaseCardContainer" type="Node" parent="."]
+script = ExtResource( 1 )
+FilpCurve = SubResource( 1 )
+InitPosition = Vector2( 0, -200 )
+Discraible = "Death is inevitable."
+Shed = "death"
+Take = "death"
+FlipEvent = "deth"
+
+[node name="CL" type="CanvasLayer" parent="BaseCardContainer"]
+
+[node name="back" type="Sprite" parent="BaseCardContainer/CL"]
+texture = ExtResource( 2 )
+
+[node name="font" type="Sprite" parent="BaseCardContainer/CL"]
+texture = ExtResource( 4 )
+
+[node name="0" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( -30, 59 )
+texture = ExtResource( 5 )
+
+[node name="1" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( -30, 59 )
+texture = ExtResource( 6 )
+
+[node name="2" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( -30, 59 )
+texture = ExtResource( 9 )
+
+[node name="3" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( -30, 59 )
+texture = ExtResource( 7 )
+
+[node name="4" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( -30, 59 )
+texture = ExtResource( 8 )
+
+[node name="5" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( 33, 59 )
+texture = ExtResource( 5 )
+
+[node name="6" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( 33, 59 )
+texture = ExtResource( 6 )
+
+[node name="7" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( 33, 59 )
+texture = ExtResource( 9 )
+
+[node name="8" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( 33, 59 )
+texture = ExtResource( 7 )
+
+[node name="9" type="Sprite" parent="BaseCardContainer/CL/font"]
+visible = false
+position = Vector2( 33, 59 )
+texture = ExtResource( 8 )

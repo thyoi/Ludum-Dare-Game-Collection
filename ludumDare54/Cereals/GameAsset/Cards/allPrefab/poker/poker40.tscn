@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameAsset/BaceCardContainer.gd" type="Script" id=1]
+[ext_resource path="res://GameAsset/Cards/art/other/back0.png" type="Texture" id=2]
+[ext_resource path="res://GameAsset/Cards/art/poker/40.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=1]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="BaseCardContainer" type="Node"]
+script = ExtResource( 1 )
+FilpCurve = SubResource( 1 )
+InitPosition = Vector2( 1200, 270 )
+NumValues = [ 4 ]
+FlipEvent = "p2"
+
+[node name="CL" type="CanvasLayer" parent="."]
+
+[node name="back" type="Sprite" parent="CL"]
+texture = ExtResource( 2 )
+
+[node name="font" type="Sprite" parent="CL"]
+texture = ExtResource( 3 )

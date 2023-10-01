@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Modules/Partical/art/mp2.png" type="Texture" id=1]
+[ext_resource path="res://Modules/Partical/SpritePartical.gd" type="Script" id=2]
+
+[node name="Sprite" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.392157 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

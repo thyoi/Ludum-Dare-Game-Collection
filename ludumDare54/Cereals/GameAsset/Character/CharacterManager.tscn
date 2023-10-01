@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameAsset/Character/CharacterManager.gd" type="Script" id=1]
+[ext_resource path="res://GameAsset/Character/art/C9.png" type="Texture" id=2]
+[ext_resource path="res://GameAsset/Character/art/CB.png" type="Texture" id=3]
+[ext_resource path="res://GameAsset/Character/art/CBB.png" type="Texture" id=4]
+
+[node name="CharacterManager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="characterBack" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="characterShadow" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 4 )
+
+[node name="character" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+z_index = 90
+texture = ExtResource( 2 )

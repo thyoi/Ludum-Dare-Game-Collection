@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameAsset/MouseManager.gd" type="Script" id=1]
+[ext_resource path="res://GameAsset/backGround/mouse.png" type="Texture" id=2]
+[ext_resource path="res://GameAsset/Resetter.gd" type="Script" id=3]
+[ext_resource path="res://GameAsset/prefab/MouseShowBox.tscn" type="PackedScene" id=4]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="mouse" type="Sprite" parent="."]
+z_index = 100
+texture = ExtResource( 2 )
+
+[node name="CanvasLayer" parent="mouse" instance=ExtResource( 4 )]
+process_priority = 80
+visible = false
+offset = Vector2( 15, -12 )
+transform = Transform2D( 1, 0, 0, 1, 15, -12 )
+
+[node name="mouseShadow" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="resetter" type="Node" parent="."]
+process_priority = -100
+script = ExtResource( 3 )

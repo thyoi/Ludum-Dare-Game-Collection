@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Modules/Dialogue/DialogueManager.gd" type="Script" id=1]
+[ext_resource path="res://Modules/Dialogue/DialogueBox.gd" type="Script" id=2]
+[ext_resource path="res://Modules/Dialogue/mainFont2.tres" type="DynamicFont" id=3]
+
+[node name="Dialogue" type="Node"]
+script = ExtResource( 1 )
+TextTime = 0.05
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+offset = Vector2( 480, 270 )
+transform = Transform2D( 1, 0, 0, 1, 480, 270 )
+script = ExtResource( 2 )
+MaxSize = Vector2( 550, 70 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer"]
+width = 20.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 1
+
+[node name="DIalogueBox" type="Line2D" parent="CanvasLayer"]
+points = PoolVector2Array( 315, 246 )
+width = 5.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = -345.0
+margin_top = -162.0
+margin_right = -305.0
+margin_bottom = -141.0
+custom_fonts/font = ExtResource( 3 )

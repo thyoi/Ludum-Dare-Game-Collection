@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Modules/Partical/Spartical/RoundPartical.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.494357, 0.481818 ), 0.0, 0.0, 0, 0, Vector2( 0.751693, 0.872727 ), 0.783082, 0.783082, 0, 0, Vector2( 1, 1 ), 0.355347, 0.355347, 0, 0, Vector2( 1, 1 ), nan, 0.0, 1, 0 ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.306998, 0.236364 ), 1.34242, 1.34242, 0, 0, Vector2( 0.501129, 0.945455 ), 0.0, 0.0, 0, 0, Vector2( 0.713318, 0.245455 ), -3.64972, -3.64972, 0, 0, Vector2( 0.893905, 0.0181818 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.171373, 0.0, 1, 0 ]
+
+[node name="Line2D" type="Line2D"]
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource( 1 )
+MaxLine = 50.0
+SizeCurve = SubResource( 1 )
+LineCurve = SubResource( 2 )
+Duration = 0.4
